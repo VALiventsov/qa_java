@@ -7,36 +7,13 @@ import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
 import java.util.List;
 
-
-@RunWith(Parameterized.class)
 public class LionTest {
-    private final String lionSex;
-    private final boolean expected;
-    public LionTest (String lionSex, boolean expected) {
-        this.lionSex = lionSex;
-        this.expected = expected;
-    }
-
-    @Parameterized.Parameters
-    public static Object [][] getResult() {
-        return new Object[][] {
-                {"Самец", true},
-                {"Самка", false},
-        };
-    }
 
     @Test
     public void testGetKittens() {
         Lion lion = Mockito.mock(Lion.class);
         Mockito.when(lion.getKittens()).thenReturn(new Feline().getKittens());
         Assert.assertEquals(new Feline().getKittens(), lion.getKittens());
-    }
-
-    @Test
-    public void testDoesHaveMane() {
-        Lion lion = Mockito.mock(Lion.class);
-        Mockito.when(lion.doesHaveMane()).thenReturn(expected);
-        Assert.assertEquals(expected, lion.doesHaveMane());
     }
 
     @Test

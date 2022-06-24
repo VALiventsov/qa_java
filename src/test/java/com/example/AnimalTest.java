@@ -34,11 +34,14 @@ public class AnimalTest {
     }
 
     @Test
-    public void testGetFoodException() {
+    public void newTestGetFoodException() {
         Animal animal = new Animal();
+        Exception exception = null;
         try {
             animal.getFood("Кит");
         } catch (Exception thrown) {
+            exception = thrown;
+            Assert.assertNotNull(exception);
             String expected = "Неизвестный вид животного, используйте значение Травоядное или Хищник";
             String actual = thrown.getMessage();
             Assert.assertEquals(expected, actual);
